@@ -29,7 +29,7 @@
                     scrollTop: $s.offset().top
                 }, params.duration);
 
-                if (updateHistory) {
+                if (params.updateHistory) {
                     if (history.pushState)
                         history.pushState(null, null, id);
                     else
