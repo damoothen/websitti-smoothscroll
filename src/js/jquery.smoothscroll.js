@@ -3,7 +3,8 @@
     $.fn.smoothscroll = function (params) {
 
         var defaults = {
-            duration: 1000
+            duration: 1000,
+            updateHistory: true
         };
 
         params = $.extend({}, defaults, params);
@@ -28,10 +29,12 @@
                     scrollTop: $s.offset().top
                 }, params.duration);
 
-                if (history.pushState)
-                    history.pushState(null, null, id);
-                else
-                    location.hash = id;
+                if (updateHistory) {
+                    if (history.pushState)
+                        history.pushState(null, null, id);
+                    else
+                        location.hash = id;
+                }
 
             });
 
